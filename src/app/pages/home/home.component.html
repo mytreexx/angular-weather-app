@@ -1,8 +1,19 @@
-<p>current weather</p>
+<div class="home">
+  <div class="current-weather-card">
+    <h1>Current Weather</h1>
+    <app-card>
+      <p>Tel Aviv</p>
+      <p>{{ currentWeather[0].Temperature.Metric.Value }}</p>
+      <p>{{ currentWeather[0].Temperature.Metric.Unit }}</p>
+      <p>{{ currentWeather[0].WeatherText }}</p>
+      <p>{{ currentWeather[0].WeatherIcon }}</p>
+    </app-card>
+  </div>
 
-<app-card>
-  <p>{{ currentWeather | json }}</p>
-</app-card>
-
-<p>5 day porecast</p>
-<p>{{ fiveDayForecast | json }}</p>
+  <div class="current-weather-card">
+    <h1>fiveDayForecast</h1>
+    <app-card>
+      <p>{{ fiveDayForecast | json }}</p>
+    </app-card>
+  </div>
+</div>
