@@ -6,20 +6,26 @@
 
   <app-search />
   <div>
-    <a
-      routerLink="/home"
-      routerLinkActive="active"
-      ariaCurrentWhenActive="page"
-    >
-      home
-    </a>
-    <a
-      routerLink="/favorites"
-      routerLinkActive="active"
-      ariaCurrentWhenActive="page"
-    >
-      favorites
-    </a>
-    <app-button>asdfdas</app-button>
+    <app-button>
+      <mat-icon aria-hidden="false" aria-label="logo" fontIcon="home" />
+      <a
+        routerLink="/home"
+        routerLinkActive="active"
+        ariaCurrentWhenActive="page"
+      >
+        Home
+      </a>
+    </app-button>
+
+    <app-button>
+      <mat-icon aria-hidden="false" aria-label="logo" fontIcon="star" />
+      <a
+        routerLink="/favorites"
+        routerLinkActive="active"
+        ariaCurrentWhenActive="page"
+      >
+        Favorites
+      </a>
+    </app-button>
   </div>
 </div>
