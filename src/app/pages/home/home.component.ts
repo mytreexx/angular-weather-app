@@ -1,6 +1,6 @@
-import { HttpClient, HttpParams } from '@angular/common/http';
 import { Component } from '@angular/core';
 import { environment } from '../../../environment/enviroment';
+import { WeatherService } from 'src/app/services/weather.service';
 
 @Component({
   selector: 'app-home',
@@ -9,23 +9,24 @@ import { environment } from '../../../environment/enviroment';
 })
 export class HomeComponent {
   public currentWeather: any;
+  public fiveDayForecast: any;
 
-  constructor(private http: HttpClient) {}
+  constructor(private weather: WeatherService) {}
 
   ngOnInit(): void {
     this.getCurrentWeather();
+    this.getFiveDayForecast();
   }
 
   public getCurrentWeather() {
-    const params = new HttpParams({}).set('apikey', environment.apiKey);
+    this.weather.getCurrentWeather().subscribe((data) => {
+      this.currentWeather = data;
+    });
+  }
 
-    this.http
-      .get('http://dataservice.accuweather.com/currentconditions/v1/215854', {
-        params,
-      })
-      .subscribe((data) => {
-        console.log(data);
-        this.currentWeather = data;
-      });
+  public getFiveDayForecast() {
+    this.weather.getFiveDayForecast().subscribe((data) => {
+      this.fiveDayForecast = data;
+    });
   }
 }

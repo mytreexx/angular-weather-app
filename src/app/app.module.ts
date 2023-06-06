@@ -18,6 +18,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatDividerModule } from '@angular/material/divider';
 import { MatButtonModule } from '@angular/material/button';
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
+import { WeatherService } from './services/weather.service';
 
 @NgModule({
   declarations: [
@@ -41,7 +42,7 @@ import { MatAutocompleteModule } from '@angular/material/autocomplete';
     MatCommonModule,
     MatAutocompleteModule,
   ],
-  providers: [],
+  providers: [WeatherService],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
