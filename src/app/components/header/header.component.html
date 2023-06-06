@@ -1,1 +1,25 @@
-<p>header works!</p>
+<div class="header">
+  <div class="logo">
+    <mat-icon aria-hidden="false" aria-label="logo" fontIcon="cloud" />
+    <span>weatherApp</span>
+  </div>
+
+  <input type="text" placeholder="search city..." />
+  <div>
+    <a
+      routerLink="/home"
+      routerLinkActive="active"
+      ariaCurrentWhenActive="page"
+    >
+      home
+    </a>
+    <a
+      routerLink="/favorites"
+      routerLinkActive="active"
+      ariaCurrentWhenActive="page"
+    >
+      favorites
+    </a>
+    <app-button>asdfdas</app-button>
+  </div>
+</div>
