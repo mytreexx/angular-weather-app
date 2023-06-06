@@ -1,9 +1,7 @@
-.example-form {
-  min-width: 150px;
-  max-width: 500px;
-  width: 100%;
-}
+mat-form-field {
+  margin-top: 22px;
 
-.example-full-width {
-  width: 100%;
+  ::ng-deep .mdc-text-field {
+    border-radius: 16px;
+  }
 }
