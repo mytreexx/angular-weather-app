@@ -10,7 +10,6 @@ import { FavoritesComponent } from './pages/favorites/favorites.component';
 import { HomeComponent } from './pages/home/home.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HeaderComponent } from './components/header/header.component';
-import { TabComponent } from './components/tab/tab.component';
 import { CardComponent } from './components/card/card.component';
 import { Component } from '@angular/core';
 import { MatCommonModule } from '@angular/material/core';
@@ -27,7 +26,6 @@ import { MatButtonModule } from '@angular/material/button';
     FavoritesComponent,
     HomeComponent,
     HeaderComponent,
-    TabComponent,
     CardComponent,
   ],
   imports: [
