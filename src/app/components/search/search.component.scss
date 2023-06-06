@@ -1,0 +1,7 @@
+mat-form-field {
+  margin-top: 22px;
+
+  ::ng-deep .mdc-text-field {
+    border-radius: 16px;
+  }
+}

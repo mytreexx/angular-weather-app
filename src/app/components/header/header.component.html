@@ -1,1 +1,33 @@
-<p>header works!</p>
+<div class="header">
+  <div class="logo">
+    <mat-icon aria-hidden="false" aria-label="logo" fontIcon="cloud" />
+    <span [ngClass]="{ displayNone: getScreenWidth < 700 }">weatherApp</span>
+  </div>
+
+  <app-search />
+  <div>
+    <app-button>
+      <mat-icon aria-hidden="false" aria-label="logo" fontIcon="home" />
+      <a
+        [ngClass]="{ displayNone: getScreenWidth < 700 }"
+        routerLink="/home"
+        routerLinkActive="active"
+        ariaCurrentWhenActive="page"
+      >
+        Home
+      </a>
+    </app-button>
+
+    <app-button>
+      <mat-icon aria-hidden="false" aria-label="logo" fontIcon="star" />
+      <a
+        [ngClass]="{ displayNone: getScreenWidth < 700 }"
+        routerLink="/favorites"
+        routerLinkActive="active"
+        ariaCurrentWhenActive="page"
+      >
+        Favorites
+      </a>
+    </app-button>
+  </div>
+</div>

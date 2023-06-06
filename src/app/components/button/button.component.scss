@@ -5,3 +5,21 @@
   padding-inline: 32px;
   padding-block: 24px;
 }
+
+:host ::ng-deep {
+  .mdc-button__label {
+    color: #ffffff;
+    display: flex;
+    align-items: center;
+  }
+  .mat-icon {
+    margin-right: 8px;
+    height: 18px;
+    font-size: 18px;
+  }
+
+  a {
+    color: #ffffff;
+    text-decoration: none;
+  }
+}

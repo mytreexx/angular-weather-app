@@ -10,24 +10,21 @@ import { FavoritesComponent } from './pages/favorites/favorites.component';
 import { HomeComponent } from './pages/home/home.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HeaderComponent } from './components/header/header.component';
-import { TabComponent } from './components/tab/tab.component';
 import { CardComponent } from './components/card/card.component';
-import { Component } from '@angular/core';
 import { MatCommonModule } from '@angular/material/core';
 
 import { MatIconModule } from '@angular/material/icon';
 import { MatDividerModule } from '@angular/material/divider';
 import { MatButtonModule } from '@angular/material/button';
+import { MatAutocompleteModule } from '@angular/material/autocomplete';
 
 @NgModule({
   declarations: [
     AppComponent,
     ButtonComponent,
-    SearchComponent,
     FavoritesComponent,
     HomeComponent,
     HeaderComponent,
-    TabComponent,
     CardComponent,
   ],
   imports: [
@@ -38,7 +35,9 @@ import { MatButtonModule } from '@angular/material/button';
     MatButtonModule,
     MatDividerModule,
     MatIconModule,
+    SearchComponent,
     MatCommonModule,
+    MatAutocompleteModule,
   ],
   providers: [],
   bootstrap: [AppComponent],
