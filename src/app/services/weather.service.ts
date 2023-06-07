@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpParams } from '@angular/common/http';
-import { environment } from '../../environment/enviroment';
+import { environment } from '../../environment/environment';
 import { CurrentWeather, FiveDayForecast } from './response';
 
 const weatherApiUrl = 'http://dataservice.accuweather.com';
