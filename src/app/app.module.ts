@@ -20,6 +20,8 @@ import { MatDividerModule } from '@angular/material/divider';
 import { MatButtonModule } from '@angular/material/button';
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import { WeatherService } from './services/weather.service';
+import { TitleComponent } from './components/title/title.component';
+import { CityCardComponent } from './components/city-card/city-card.component';
 
 @NgModule({
   declarations: [
@@ -29,6 +31,8 @@ import { WeatherService } from './services/weather.service';
     HomeComponent,
     HeaderComponent,
     CardComponent,
+    TitleComponent,
+    CityCardComponent,
   ],
   imports: [
     BrowserModule,

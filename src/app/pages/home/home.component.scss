@@ -3,9 +3,12 @@
   margin-top: 64px;
   flex-direction: column;
   align-items: center;
-}
-
-.current-weather-card {
   width: 90vw;
   max-width: 1200px;
+}
+
+.current-weather {
+  align-self: flex-start;
+  margin-bottom: 60px;
+  color: #ffffff;
 }
