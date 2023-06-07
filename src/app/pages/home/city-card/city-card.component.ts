@@ -15,22 +15,24 @@ import { FavoritesService } from 'src/app/services/favorites.service';
 export class CityCardComponent {
   @Input() weather: CurrentWeather;
   @Input() icon: IconProp;
+  @Input() cityId: number;
 
   constructor(public favorites: FavoritesService) {}
-  cityCode = 215854;
 
   isFavorite = this.favorites.favorites.some(
-    (favorite) => favorite === this.cityCode
+    (favorite) => favorite === this.cityId
   );
   favoriteIcon = this.isFavorite ? faHeartCircleMinus : faHeartCirclePlus;
 
   toggleFavorite() {
     this.isFavorite
-      ? this.favorites.removeFromFavorites(this.cityCode)
-      : this.favorites.addToFavorites(this.cityCode);
+      ? this.favorites.removeFromFavorites(this.cityId)
+      : this.favorites.addToFavorites(this.cityId);
+
     this.isFavorite = this.favorites.favorites.some(
-      (favorite) => favorite === this.cityCode
+      (favorite) => favorite === this.cityId
     );
+
     this.favoriteIcon = this.isFavorite
       ? faHeartCircleMinus
       : faHeartCirclePlus;

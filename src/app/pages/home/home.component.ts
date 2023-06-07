@@ -3,6 +3,7 @@ import { IconProp } from '@fortawesome/fontawesome-svg-core';
 import iconMap from './iconMap';
 import { WeatherService } from 'src/app/services/weather.service';
 import { CurrentWeather, DailyForecast } from 'src/app/services/response';
+import { LocationService } from 'src/app/services/location.service';
 
 @Component({
   selector: 'app-home',
@@ -14,7 +15,10 @@ export class HomeComponent {
   public fiveDayForecast: DailyForecast[];
   public currentWeatherIcon: IconProp;
 
-  constructor(private weather: WeatherService) {}
+  constructor(
+    private weather: WeatherService,
+    public location: LocationService
+  ) {}
 
   ngOnInit(): void {
     this.getCurrentWeather();
