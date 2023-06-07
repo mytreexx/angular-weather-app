@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { IconProp } from '@fortawesome/fontawesome-svg-core';
+import iconMap from './iconMap';
 import { WeatherService } from 'src/app/services/weather.service';
 import { CurrentWeather, FiveDayForecast } from 'src/app/services/response';
 
@@ -21,7 +23,8 @@ export class HomeComponent {
 
   public getCurrentWeather() {
     this.weather.getCurrentWeather().subscribe((data) => {
-      this.currentWeather = data;
+      this.currentWeather = data[0];
+      this.currentWeatherIcon = iconMap[data[0].WeatherIcon];
     });
   }
 
