@@ -1,1 +1,11 @@
-<p>home works!</p>
+<div class="home">
+  <div class="current-weather">
+    <app-title>Current Weather</app-title>
+    <app-city-card [weather]="currentWeather" [icon]="currentWeatherIcon" />
+  </div>
+
+  <div class="weather-card">
+    <app-title>Five Day Forecast</app-title>
+    <app-five-day-forecast [forecast]="fiveDayForecast" />
+  </div>
+</div>

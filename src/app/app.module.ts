@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { HttpClientModule } from '@angular/common/http';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -12,11 +13,17 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HeaderComponent } from './components/header/header.component';
 import { CardComponent } from './components/card/card.component';
 import { MatCommonModule } from '@angular/material/core';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
 import { MatIconModule } from '@angular/material/icon';
 import { MatDividerModule } from '@angular/material/divider';
 import { MatButtonModule } from '@angular/material/button';
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
+import { WeatherService } from './services/weather.service';
+import { TitleComponent } from './components/title/title.component';
+import { CityCardComponent } from './pages/home/city-card/city-card.component';
+import { DailyCardComponent } from './pages/home/daily-card/daily-card.component';
+import { FiveDayForecastComponent } from './pages/home/five-day-forecast/five-day-forecast.component';
 
 @NgModule({
   declarations: [
@@ -26,9 +33,14 @@ import { MatAutocompleteModule } from '@angular/material/autocomplete';
     HomeComponent,
     HeaderComponent,
     CardComponent,
+    TitleComponent,
+    CityCardComponent,
+    DailyCardComponent,
+    FiveDayForecastComponent,
   ],
   imports: [
     BrowserModule,
+    HttpClientModule,
     AppRoutingModule,
     StoreModule.forRoot({}, {}),
     BrowserAnimationsModule,
@@ -38,8 +50,9 @@ import { MatAutocompleteModule } from '@angular/material/autocomplete';
     SearchComponent,
     MatCommonModule,
     MatAutocompleteModule,
+    FontAwesomeModule,
   ],
-  providers: [],
+  providers: [WeatherService],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

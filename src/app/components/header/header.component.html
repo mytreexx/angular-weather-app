@@ -1,7 +1,7 @@
 <div class="header">
   <div class="logo">
     <mat-icon aria-hidden="false" aria-label="logo" fontIcon="cloud" />
-    <span [ngClass]="{ displayNone: getScreenWidth < 700 }">weatherApp</span>
+    <span [ngClass]="{ displayNone: mobileDisplay }">weatherApp</span>
   </div>
 
   <app-search />
@@ -9,7 +9,7 @@
     <app-button>
       <mat-icon aria-hidden="false" aria-label="logo" fontIcon="home" />
       <a
-        [ngClass]="{ displayNone: getScreenWidth < 700 }"
+        [ngClass]="{ displayNone: mobileDisplay }"
         routerLink="/home"
         routerLinkActive="active"
         ariaCurrentWhenActive="page"
@@ -21,7 +21,7 @@
     <app-button>
       <mat-icon aria-hidden="false" aria-label="logo" fontIcon="star" />
       <a
-        [ngClass]="{ displayNone: getScreenWidth < 700 }"
+        [ngClass]="{ displayNone: mobileDisplay }"
         routerLink="/favorites"
         routerLinkActive="active"
         ariaCurrentWhenActive="page"

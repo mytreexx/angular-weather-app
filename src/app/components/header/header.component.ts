@@ -6,17 +6,14 @@ import { Component, HostListener } from '@angular/core';
   styleUrls: ['./header.component.scss'],
 })
 export class HeaderComponent {
-  public getScreenWidth: any;
-  public getScreenHeight: any;
+  public mobileDisplay: boolean;
 
   ngOnInit() {
-    this.getScreenWidth = window.innerWidth;
-    this.getScreenHeight = window.innerHeight;
+    this.mobileDisplay = window.innerWidth < 700;
   }
 
   @HostListener('window:resize', ['$event'])
   onWindowResize() {
-    this.getScreenWidth = window.innerWidth;
-    this.getScreenHeight = window.innerHeight;
+    this.mobileDisplay = window.innerWidth < 700;
   }
 }

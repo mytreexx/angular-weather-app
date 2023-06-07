@@ -1,0 +1,36 @@
+.day-card {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  width: 125px;
+  * {
+    margin-block: 8px;
+  }
+
+  @media (max-width: 1000px) {
+    flex-direction: row-reverse;
+    align-items: center;
+    align-content: center;
+    justify-content: space-between;
+    width: 100%;
+    * {
+      width: 8%;
+      display: flex;
+      justify-content: center;
+    }
+  }
+}
+
+.temperature {
+  font-size: 16px;
+  @media (max-width: 650px) {
+    font-size: 14px;
+  }
+}
+
+.icon {
+  font-size: 50px;
+  @media (max-width: 650px) {
+    font-size: 40px;
+  }
+}
