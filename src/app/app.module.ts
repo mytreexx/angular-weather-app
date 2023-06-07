@@ -23,6 +23,7 @@ import { WeatherService } from './services/weather.service';
 import { TitleComponent } from './components/title/title.component';
 import { CityCardComponent } from './pages/home/city-card/city-card.component';
 import { DailyCardComponent } from './pages/home/daily-card/daily-card.component';
+import { FiveDayForecastComponent } from './pages/home/five-day-forecast/five-day-forecast.component';
 
 @NgModule({
   declarations: [
@@ -35,6 +36,7 @@ import { DailyCardComponent } from './pages/home/daily-card/daily-card.component
     TitleComponent,
     CityCardComponent,
     DailyCardComponent,
+    FiveDayForecastComponent,
   ],
   imports: [
     BrowserModule,
