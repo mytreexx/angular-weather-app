@@ -1,5 +1,13 @@
 <app-card>
-  <h2 class="city-name">Tel Aviv</h2>
+  <div class="city-title">
+    <h2 class="city-name">Tel Aviv</h2>
+    <fa-icon
+      class="favorites-icon fa-stroke"
+      [icon]="favoriteIcon"
+      (click)="toggleFavorite()"
+    />
+  </div>
+
   <div class="current-weather-info">
     <fa-icon class="large-icon" [icon]="icon" />
     <div>
