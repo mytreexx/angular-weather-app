@@ -3,17 +3,3 @@
   justify-content: space-around;
   width: 1200px;
 }
-
-.day-card {
-  display: flex;
-  align-items: center;
-  flex-direction: column;
-  width: 130px;
-  * {
-    margin-block: 4px;
-  }
-}
-
-.temperature {
-  font-size: 16px;
-}

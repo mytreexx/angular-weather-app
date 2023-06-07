@@ -1,21 +1,7 @@
 <app-card>
   <div class="five-day-forecast">
     <app-card *ngFor="let day of forecast; index as i">
-      <div class="day-card">
-        <span>{{ day.Day.IconPhrase }}</span>
-        <span>{{ day.Day.Icon }}</span>
-        <span class="temperature">
-          {{ day.Temperature.Minimum.Value }}°{{
-            day.Temperature.Minimum.Unit
-          }}
-          - {{ day.Temperature.Maximum.Value }}°{{
-            day.Temperature.Maximum.Unit
-          }}
-        </span>
-        <span>{{ day.Night.Icon }}</span>
-        <span>{{ day.Night.IconPhrase }}</span>
-        <span>{{ day.Date | date : "dd/MM" }}</span>
-      </div>
+      <app-daily-card [day]="day" />
     </app-card>
   </div>
 </app-card>
