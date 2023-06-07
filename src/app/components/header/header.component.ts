@@ -6,7 +6,7 @@ import { Component, HostListener } from '@angular/core';
   styleUrls: ['./header.component.scss'],
 })
 export class HeaderComponent {
-  public mobileDisplay: any;
+  public mobileDisplay: boolean;
 
   ngOnInit() {
     this.mobileDisplay = window.innerWidth < 700;

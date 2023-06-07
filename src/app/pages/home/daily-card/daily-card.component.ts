@@ -1,4 +1,5 @@
 import { Component, Input } from '@angular/core';
+import { DailyForecast } from 'src/app/services/response';
 
 @Component({
   selector: 'app-daily-card',
@@ -6,5 +7,5 @@ import { Component, Input } from '@angular/core';
   styleUrls: ['./daily-card.component.scss'],
 })
 export class DailyCardComponent {
-  @Input() day: any;
+  @Input() day: DailyForecast;
 }

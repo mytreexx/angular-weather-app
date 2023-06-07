@@ -1,4 +1,6 @@
 import { Component, Input } from '@angular/core';
+import { IconProp } from '@fortawesome/fontawesome-svg-core';
+import { CurrentWeather } from 'src/app/services/response';
 
 @Component({
   selector: 'app-city-card',
@@ -6,6 +8,6 @@ import { Component, Input } from '@angular/core';
   styleUrls: ['./city-card.component.scss'],
 })
 export class CityCardComponent {
-  @Input() weather: any;
-  @Input() icon: any;
+  @Input() weather: CurrentWeather;
+  @Input() icon: IconProp;
 }
