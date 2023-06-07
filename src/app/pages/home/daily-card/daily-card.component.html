@@ -1,11 +1,15 @@
 <div class="day-card">
   <span>{{ day.Day.IconPhrase }}</span>
-  <span>{{ day.Day.Icon }}</span>
+  <fa-icon class="icon" [icon]="dayIcon" />
+
   <span class="temperature">
-    {{ day.Temperature.Minimum.Value }}°{{ day.Temperature.Minimum.Unit }} -
-    {{ day.Temperature.Maximum.Value }}°{{ day.Temperature.Maximum.Unit }}
+    {{ day.Temperature.Minimum.Value }}°{{ day.Temperature.Minimum.Unit }}/{{
+      day.Temperature.Maximum.Value
+    }}°{{ day.Temperature.Maximum.Unit }}
   </span>
-  <span>{{ day.Night.Icon }}</span>
+
+  <fa-icon class="icon" [icon]="nightIcon" />
   <span>{{ day.Night.IconPhrase }}</span>
+
   <span>{{ day.Date | date : "dd/MM" }}</span>
 </div>

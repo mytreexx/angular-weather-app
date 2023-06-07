@@ -12,7 +12,9 @@ export class WeatherService {
   constructor(private http: HttpClient) {}
 
   private apiRequest<T>(path: string) {
-    const params = new HttpParams({}).set('apikey', environment.apiKey);
+    const params = new HttpParams({})
+      .set('apikey', environment.apiKey)
+      .set('metric', true);
 
     return this.http.get<T>(`${weatherApiUrl}${path}`, {
       params,
