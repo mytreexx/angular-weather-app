@@ -22,6 +22,7 @@ import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import { WeatherService } from './services/weather.service';
 import { TitleComponent } from './components/title/title.component';
 import { CityCardComponent } from './pages/home/city-card/city-card.component';
+import { DailyCardComponent } from './pages/home/daily-card/daily-card.component';
 
 @NgModule({
   declarations: [
@@ -33,6 +34,7 @@ import { CityCardComponent } from './pages/home/city-card/city-card.component';
     CardComponent,
     TitleComponent,
     CityCardComponent,
+    DailyCardComponent,
   ],
   imports: [
     BrowserModule,

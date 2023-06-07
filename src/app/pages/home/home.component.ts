@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { IconProp } from '@fortawesome/fontawesome-svg-core';
 import iconMap from './iconMap';
 import { WeatherService } from 'src/app/services/weather.service';
-import { CurrentWeather, FiveDayForecast } from 'src/app/services/response';
+import { CurrentWeather, DailyForecast } from 'src/app/services/response';
 
 @Component({
   selector: 'app-home',
@@ -11,7 +11,7 @@ import { CurrentWeather, FiveDayForecast } from 'src/app/services/response';
 })
 export class HomeComponent {
   public currentWeather: CurrentWeather;
-  public fiveDayForecast: FiveDayForecast;
+  public fiveDayForecast: DailyForecast[];
   public currentWeatherIcon: IconProp;
 
   constructor(private weather: WeatherService) {}
@@ -30,7 +30,7 @@ export class HomeComponent {
 
   public getFiveDayForecast() {
     this.weather.getFiveDayForecast().subscribe((data) => {
-      this.fiveDayForecast = data;
+      this.fiveDayForecast = data.DailyForecasts;
     });
   }
 }

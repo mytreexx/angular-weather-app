@@ -12,7 +12,7 @@ interface DayPortion {
   HasPrecipitation: boolean;
 }
 
-interface DailyForecast {
+export interface DailyForecast {
   Date: string;
   EpochDate: number;
   Temperature: {
