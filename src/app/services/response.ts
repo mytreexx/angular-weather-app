@@ -1,3 +1,5 @@
+import iconMap from '../pages/home/iconMap';
+
 interface MeausringUnit {
   Value: number;
   Unit: 'C' | 'F';
@@ -5,7 +7,7 @@ interface MeausringUnit {
 }
 
 interface DayPortion {
-  Icon: number; //todo get number inums;
+  Icon: keyof typeof iconMap;
   IconPhrase: string;
   HasPrecipitation: boolean;
 }
@@ -28,7 +30,7 @@ export interface CurrentWeather {
   LocalObservationDateTime: string;
   EpochTime: number;
   WeatherText: string;
-  WeatherIcon: number; //todo  get number enums
+  WeatherIcon: keyof typeof iconMap;
   HasPrecipitation: boolean;
   PrecipitationType: null | string;
   IsDayTime: boolean;

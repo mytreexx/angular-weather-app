@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { WeatherService } from 'src/app/services/weather.service';
+import { CurrentWeather, FiveDayForecast } from 'src/app/services/response';
 
 @Component({
   selector: 'app-home',
@@ -7,8 +8,9 @@ import { WeatherService } from 'src/app/services/weather.service';
   styleUrls: ['./home.component.scss'],
 })
 export class HomeComponent {
-  public currentWeather: any;
-  public fiveDayForecast: any;
+  public currentWeather: CurrentWeather;
+  public fiveDayForecast: FiveDayForecast;
+  public currentWeatherIcon: IconProp;
 
   constructor(private weather: WeatherService) {}
 
