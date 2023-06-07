@@ -21,7 +21,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import { WeatherService } from './services/weather.service';
 import { TitleComponent } from './components/title/title.component';
-import { CityCardComponent } from './components/city-card/city-card.component';
+import { CityCardComponent } from './pages/home/city-card/city-card.component';
 
 @NgModule({
   declarations: [
