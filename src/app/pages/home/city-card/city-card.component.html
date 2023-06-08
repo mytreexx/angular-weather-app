@@ -9,11 +9,11 @@
   </div>
 
   <div class="current-weather-info">
-    <fa-icon class="large-icon" [icon]="icon" />
+    <fa-icon class="large-icon" [icon]="currentWeatherIcon" />
     <div>
-      <span>{{ weather.Temperature.Metric.Value }}</span>
-      <span>°{{ weather.Temperature.Metric.Unit }}</span>
-      <p>{{ weather.WeatherText }}</p>
+      <span>{{ currentWeather.Temperature.Metric.Value }}</span>
+      <span>°{{ currentWeather.Temperature.Metric.Unit }}</span>
+      <p>{{ currentWeather.WeatherText }}</p>
     </div>
   </div>
 </app-card>
