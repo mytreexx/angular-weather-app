@@ -71,7 +71,7 @@ export class SearchComponent implements OnInit {
     const filterValue = value.toLowerCase();
 
     return this.weatherApi
-      .GetSearchedResults(filterValue)
+      .getSearchedResults(filterValue)
       .pipe(
         map((data) =>
           data.map(

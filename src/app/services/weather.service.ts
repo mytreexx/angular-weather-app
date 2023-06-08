@@ -3,6 +3,7 @@ import { HttpClient, HttpParams } from '@angular/common/http';
 import { environment } from '../../environment/environment';
 import { CurrentWeather, FiveDayForecast, LocationDetails } from './response';
 import { API_PATH, PARAMS } from './consts';
+import { Geoposition } from './response';
 
 @Injectable({
   providedIn: 'root',
@@ -36,10 +37,17 @@ export class WeatherService {
     );
   }
 
-  public GetSearchedResults(searchValue: string) {
+  public getSearchedResults(searchValue: string) {
     return this.apiRequest<LocationDetails[]>(
       `${API_PATH.AUTOCOMPLETE}`,
       searchValue
+    );
+  }
+
+  public getGeoposition(lat: number, lon: number) {
+    return this.apiRequest<Geoposition>(
+      `${API_PATH.GEOPOSITION}`,
+      `${lat},${lon}`
     );
   }
 }
