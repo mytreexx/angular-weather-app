@@ -1,0 +1,22 @@
+.favorites {
+  display: flex;
+  margin-top: 64px;
+  flex-direction: column;
+  width: 90vw;
+  max-width: 1150px;
+}
+
+.favorites-list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  height: calc(100vh - 220px);
+  overflow-y: auto;
+  align-content: flex-start;
+
+  * {
+    height: fit-content;
+    margin-bottom: 32px;
+    margin-inline: 8px;
+  }
+}

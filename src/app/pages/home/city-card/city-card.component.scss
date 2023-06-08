@@ -1,5 +1,5 @@
 .city-name {
-  font-size: 52px;
+  font-size: 32px;
 }
 
 .current-weather-info {
@@ -29,5 +29,23 @@ p {
 }
 
 .large-icon {
-  font-size: 120px;
+  font-size: 110px;
+}
+
+.city-title {
+  display: flex;
+  justify-content: space-between;
+  cursor: pointer;
+
+  a {
+    color: #ffffff;
+    text-decoration: none;
+  }
+  :hover {
+    color: #eeeeee;
+  }
+}
+
+.favorites-icon {
+  font-size: 24px;
 }
