@@ -1,10 +1,11 @@
 import { Injectable } from '@angular/core';
+import { City } from './location.service';
 
 @Injectable({
   providedIn: 'root',
 })
 export class FavoritesService {
-  favorites: { id: number; name: string }[] = [
+  favorites: City[] = [
     { id: 231459, name: 'Vilnius' },
     { id: 215836, name: 'Givatayim' },
     { id: 212476, name: 'Rishon LeZiyyon' },
@@ -15,13 +16,11 @@ export class FavoritesService {
     return this.favorites.some((favorite) => favorite.id === id);
   }
 
-  addToFavorites(city: { id: number; name: string }) {
+  addToFavorites(city: City) {
     if (this.checkIfFavorite(city.id)) return;
     this.favorites.push(city);
   }
   removeFromFavorites(cityId: number) {
-    this.favorites = this.favorites.filter(
-      (city: { id: number; name: string }) => city.id !== cityId
-    );
+    this.favorites = this.favorites.filter((city: City) => city.id !== cityId);
   }
 }
