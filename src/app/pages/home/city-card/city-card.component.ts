@@ -28,15 +28,16 @@ export class CityCardComponent {
 
   public currentWeather: CurrentWeather;
   public currentWeatherIcon: IconProp;
+  isFavorite: boolean;
+  favoriteIcon: IconProp;
 
   ngOnInit(): void {
     this.getCurrentWeather();
+    this.isFavorite = this.favorites.checkIfFavorite(this.cityId);
+    this.favoriteIcon = this.isFavorite
+      ? faHeartCircleMinus
+      : faHeartCirclePlus;
   }
-
-  isFavorite = this.favorites.favorites.some(
-    (favorite) => favorite.id === this.cityId
-  );
-  favoriteIcon = this.isFavorite ? faHeartCircleMinus : faHeartCirclePlus;
 
   public getCurrentWeather() {
     this.weatherApi.getCurrentWeather(this.cityId).subscribe((data) => {
@@ -50,9 +51,7 @@ export class CityCardComponent {
       ? this.favorites.removeFromFavorites(this.cityId)
       : this.favorites.addToFavorites({ id: this.cityId, name: this.cityName });
 
-    this.isFavorite = this.favorites.favorites.some(
-      (favorite) => favorite.id === this.cityId
-    );
+    this.isFavorite = this.favorites.checkIfFavorite(this.cityId);
 
     this.favoriteIcon = this.isFavorite
       ? faHeartCircleMinus

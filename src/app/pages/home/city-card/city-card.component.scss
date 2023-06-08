@@ -37,6 +37,10 @@ p {
   justify-content: space-between;
   cursor: pointer;
 
+  a {
+    color: #ffffff;
+    text-decoration: none;
+  }
   :hover {
     color: #eeeeee;
   }

@@ -10,8 +10,4 @@ import { CurrentWeather } from 'src/app/services/response';
 export class FavoritesComponent {
   constructor(public favorites: FavoritesService) {}
   favoritesCurrentWeather: CurrentWeather[] = [];
-
-  ngOnInit() {
-    console.log(this.favorites.favorites);
-  }
 }

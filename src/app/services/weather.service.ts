@@ -12,7 +12,7 @@ const weatherApiUrl = 'http://dataservice.accuweather.com';
 export class WeatherService {
   constructor(private http: HttpClient, private location: LocationService) {}
 
-  private apiRequest<T>(path: string) {
+  apiRequest<T>(path: string) {
     const params = new HttpParams({})
       .set('apikey', environment.apiKey)
       .set('metric', true);

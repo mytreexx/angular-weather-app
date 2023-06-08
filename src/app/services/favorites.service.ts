@@ -11,14 +11,17 @@ export class FavoritesService {
     { id: 215854, name: 'Tel Aviv' },
   ];
 
+  checkIfFavorite(id: number) {
+    return this.favorites.some((favorite) => favorite.id === id);
+  }
+
   addToFavorites(city: { id: number; name: string }) {
+    if (this.checkIfFavorite(city.id)) return;
     this.favorites.push(city);
-    console.log('added to favorites!!!', this.favorites);
   }
   removeFromFavorites(cityId: number) {
     this.favorites = this.favorites.filter(
       (city: { id: number; name: string }) => city.id !== cityId
     );
-    console.log('removed from favorites!!!', this.favorites);
   }
 }
