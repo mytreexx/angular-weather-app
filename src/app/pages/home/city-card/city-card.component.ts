@@ -1,3 +1,4 @@
+import { Component, Input, OnChanges, SimpleChanges } from '@angular/core';
 import { Component, Input } from '@angular/core';
 import { IconProp } from '@fortawesome/fontawesome-svg-core';
 import iconMap from '../iconMap';
@@ -16,7 +17,7 @@ import { LocationService } from 'src/app/services/location.service';
   templateUrl: './city-card.component.html',
   styleUrls: ['./city-card.component.scss'],
 })
-export class CityCardComponent {
+export class CityCardComponent implements OnChanges {
   constructor(
     public favorites: FavoritesService,
     private weatherApi: WeatherService,
@@ -37,6 +38,13 @@ export class CityCardComponent {
     this.favoriteIcon = this.isFavorite
       ? faHeartCircleMinus
       : faHeartCirclePlus;
+  }
+
+  ngOnChanges(changes: SimpleChanges): void {
+    const cityId = changes['cityId'];
+    if (cityId.currentValue !== cityId.previousValue) {
+      this.getCurrentWeather();
+    }
   }
 
   public getCurrentWeather() {

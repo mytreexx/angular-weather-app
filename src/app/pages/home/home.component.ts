@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { WeatherService } from 'src/app/services/weather.service';
 import { DailyForecast } from 'src/app/services/response';
-import { LocationService } from 'src/app/services/location.service';
+import { City, LocationService } from 'src/app/services/location.service';
 
 @Component({
   selector: 'app-home',
@@ -10,6 +10,7 @@ import { LocationService } from 'src/app/services/location.service';
 })
 export class HomeComponent {
   public fiveDayForecast: DailyForecast[];
+  public currentCity: City;
 
   constructor(
     private weatherApi: WeatherService,
@@ -17,12 +18,17 @@ export class HomeComponent {
   ) {}
 
   ngOnInit(): void {
-    this.getFiveDayForecast();
+    this.location.city.subscribe((city) => {
+      this.currentCity = city;
+      this.getFiveDayForecast();
+    });
   }
 
   public getFiveDayForecast() {
-    this.weatherApi.getFiveDayForecast().subscribe((data) => {
-      this.fiveDayForecast = data.DailyForecasts;
-    });
+    this.weatherApi
+      .getFiveDayForecast(this.currentCity.id)
+      .subscribe((data) => {
+        this.fiveDayForecast = data.DailyForecasts;
+      });
   }
 }

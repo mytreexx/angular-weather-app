@@ -56,3 +56,18 @@ export interface FiveDayForecast {
   };
   DailyForecasts: DailyForecast[];
 }
+
+interface AreaIdAndCode {
+  ID: string;
+  LocalizedName: string;
+}
+
+export interface LocationDetails {
+  Version: number;
+  Key: string;
+  Type: string;
+  Rank: number;
+  LocalizedName: string;
+  Country: AreaIdAndCode;
+  AdministrativeArea: AreaIdAndCode;
+}

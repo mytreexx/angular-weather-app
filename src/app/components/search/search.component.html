@@ -7,9 +7,14 @@
     [formControl]="myControl"
     [matAutocomplete]="auto"
   />
-  <mat-autocomplete #auto="matAutocomplete" class="test">
+  <mat-autocomplete
+    #auto="matAutocomplete"
+    class="test"
+    (optionSelected)="onSelect($event.option.value)"
+    [displayWith]="autocompleteDisplay"
+  >
     <mat-option *ngFor="let option of filteredOptions | async" [value]="option">
-      {{ option }}
+      {{ option.LocalizedName }}
     </mat-option>
   </mat-autocomplete>
 </mat-form-field>

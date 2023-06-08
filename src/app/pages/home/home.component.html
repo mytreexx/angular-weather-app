@@ -1,10 +1,7 @@
 <div class="home">
   <div class="current-weather">
     <app-title>Current Weather</app-title>
-    <app-city-card
-      [cityId]="location.city.id"
-      [cityName]="location.city.name"
-    />
+    <app-city-card [cityId]="currentCity.id" [cityName]="currentCity.name" />
   </div>
 
   <div class="weather-card">
