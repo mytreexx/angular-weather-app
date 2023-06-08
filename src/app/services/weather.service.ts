@@ -22,10 +22,8 @@ export class WeatherService {
     });
   }
 
-  public getCurrentWeather() {
-    return this.apiRequest<CurrentWeather[]>(
-      `/currentconditions/v1/${this.location.city.id}`
-    );
+  public getCurrentWeather(id: number) {
+    return this.apiRequest<CurrentWeather[]>(`/currentconditions/v1/${id}`);
   }
 
   public getFiveDayForecast() {

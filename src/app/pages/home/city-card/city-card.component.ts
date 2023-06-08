@@ -39,7 +39,7 @@ export class CityCardComponent {
   favoriteIcon = this.isFavorite ? faHeartCircleMinus : faHeartCirclePlus;
 
   public getCurrentWeather() {
-    this.weatherApi.getCurrentWeather().subscribe((data) => {
+    this.weatherApi.getCurrentWeather(this.cityId).subscribe((data) => {
       this.currentWeather = data[0];
       this.currentWeatherIcon = iconMap[data[0].WeatherIcon];
     });
