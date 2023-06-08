@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { environment } from '../../environment/environment';
-import { CurrentWeather, FiveDayForecast } from './response';
+import { CurrentWeather, FiveDayForecast, LocationDetails } from './response';
 import { LocationService } from './location.service';
 import { API_PATH, PARAMS } from './consts';
 
@@ -9,12 +9,16 @@ import { API_PATH, PARAMS } from './consts';
   providedIn: 'root',
 })
 export class WeatherService {
-  constructor(private http: HttpClient, private location: LocationService) {}
+  constructor(private http: HttpClient) {}
 
-  apiRequest<T>(path: string) {
-    const params = new HttpParams({})
+  apiRequest<T>(path: string, q = '') {
+    let params = new HttpParams({})
       .set(PARAMS.API_KEY, environment.apiKey)
       .set(PARAMS.METRIC, true);
+
+    if (q) {
+      params = params.set(PARAMS.Q, q);
+    }
 
     return this.http.get<T>(`${API_PATH.WEATHER_API_URL}${path}`, {
       params,
@@ -27,9 +31,16 @@ export class WeatherService {
     );
   }
 
-  public getFiveDayForecast() {
+  public getFiveDayForecast(cityId: number) {
     return this.apiRequest<FiveDayForecast>(
-      `${API_PATH.FIVE_DAY_FORECAST}${this.location.city.id}`
+      `${API_PATH.FIVE_DAY_FORECAST}${cityId}`
+    );
+  }
+
+  public GetSearchedResults(searchValue: string) {
+    return this.apiRequest<LocationDetails[]>(
+      `${API_PATH.AUTOCOMPLETE}`,
+      searchValue
     );
   }
 }

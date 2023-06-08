@@ -1,11 +1,17 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { Observable } from 'rxjs';
-import { map, startWith } from 'rxjs/operators';
+import { concatAll, map, debounceTime } from 'rxjs/operators';
 import { NgFor, AsyncPipe } from '@angular/common';
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
+import { WeatherService } from 'src/app/services/weather.service';
+import { LocationDetails } from 'src/app/services/response';
+import { LocationService } from 'src/app/services/location.service';
+import { Router } from '@angular/router';
+
+type City = Pick<LocationDetails, 'Key' | 'LocalizedName'>;
 
 /**
  * @title Filter autocomplete
@@ -27,21 +33,52 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 })
 export class SearchComponent implements OnInit {
   myControl = new FormControl('');
-  options: string[] = ['One', 'Two', 'Three'];
-  filteredOptions: Observable<string[]>;
+  options: any[] = [];
+  filteredOptions: Observable<City[]>;
+
+  constructor(
+    private weatherApi: WeatherService,
+    private location: LocationService,
+    private router: Router
+  ) {}
 
   ngOnInit() {
     this.filteredOptions = this.myControl.valueChanges.pipe(
-      startWith(''),
-      map((value) => this._filter(value || ''))
+      debounceTime(300),
+      map((value) => this.filter(value || '')),
+      concatAll()
     );
   }
 
-  private _filter(value: string): string[] {
+  public onSelect(option: City) {
+    this.location.changeCity({
+      id: Number(option.Key),
+      name: option.LocalizedName,
+    });
+
+    this.router.navigate(['home']);
+  }
+
+  public autocompleteDisplay(value: City) {
+    return value.LocalizedName;
+  }
+
+  filter(value: string | City) {
+    if (typeof value !== 'string') {
+      value = value.LocalizedName;
+    }
+
     const filterValue = value.toLowerCase();
 
-    return this.options.filter((option) =>
-      option.toLowerCase().includes(filterValue)
-    );
+    return this.weatherApi
+      .GetSearchedResults(filterValue)
+      .pipe(
+        map((data) =>
+          data.map(
+            (option) =>
+              <City>{ Key: option.Key, LocalizedName: option.LocalizedName }
+          )
+        )
+      );
   }
 }
