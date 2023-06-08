@@ -1,6 +1,8 @@
 <app-card>
   <div class="city-title">
-    <h2 class="city-name">{{ cityName }}</h2>
+    <a routerLink="/home">
+      <h2 class="city-name" (click)="changeCity()">{{ cityName }}</h2>
+    </a>
     <fa-icon
       class="favorites-icon fa-stroke"
       [icon]="favoriteIcon"

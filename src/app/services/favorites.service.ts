@@ -5,10 +5,10 @@ import { Injectable } from '@angular/core';
 })
 export class FavoritesService {
   favorites: { id: number; name: string }[] = [
-    { id: 123, name: 'test' },
-    { id: 666, name: 'hi' },
-    { id: 5368, name: 'hello' },
-    { id: 1233, name: 'yeah' },
+    { id: 231459, name: 'Vilnius' },
+    { id: 215836, name: 'Givatayim' },
+    { id: 212476, name: 'Rishon LeZiyyon' },
+    { id: 215854, name: 'Tel Aviv' },
   ];
 
   addToFavorites(city: { id: number; name: string }) {

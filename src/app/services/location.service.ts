@@ -7,4 +7,8 @@ export class LocationService {
   // todo check how to use interface here
   city: { id: number; name: string } = { id: 215854, name: 'Tel-Aviv' };
   constructor() {}
+
+  changeCity(city: { id: number; name: string }) {
+    this.city = city;
+  }
 }

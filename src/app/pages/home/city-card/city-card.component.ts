@@ -9,6 +9,7 @@ import {
 } from '@fortawesome/free-solid-svg-icons';
 import { FavoritesService } from 'src/app/services/favorites.service';
 import { WeatherService } from 'src/app/services/weather.service';
+import { LocationService } from 'src/app/services/location.service';
 
 @Component({
   selector: 'app-city-card',
@@ -18,7 +19,8 @@ import { WeatherService } from 'src/app/services/weather.service';
 export class CityCardComponent {
   constructor(
     public favorites: FavoritesService,
-    private weatherApi: WeatherService
+    private weatherApi: WeatherService,
+    private location: LocationService
   ) {}
 
   @Input() cityId: number;
@@ -55,5 +57,9 @@ export class CityCardComponent {
     this.favoriteIcon = this.isFavorite
       ? faHeartCircleMinus
       : faHeartCirclePlus;
+  }
+
+  public changeCity() {
+    this.location.changeCity({ id: this.cityId, name: this.cityName });
   }
 }
