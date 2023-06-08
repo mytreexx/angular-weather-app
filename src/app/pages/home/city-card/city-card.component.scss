@@ -1,5 +1,5 @@
 .city-name {
-  font-size: 52px;
+  font-size: 32px;
 }
 
 .current-weather-info {
@@ -35,6 +35,11 @@ p {
 .city-title {
   display: flex;
   justify-content: space-between;
+  cursor: pointer;
+
+  :hover {
+    color: #eeeeee;
+  }
 }
 
 .favorites-icon {
