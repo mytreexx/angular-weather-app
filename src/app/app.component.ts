@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 import { GeolocationService } from '@ng-web-apis/geolocation';
+import { WeatherService } from './services/weather.service';
+import { LocationService } from './services/location.service';
 
 @Component({
   selector: 'app-root',
@@ -7,7 +9,11 @@ import { GeolocationService } from '@ng-web-apis/geolocation';
   styleUrls: ['./app.component.scss'],
 })
 export class AppComponent {
-  constructor(private readonly geolocation: GeolocationService) {}
+  constructor(
+    private readonly geolocation: GeolocationService,
+    public weatherApi: WeatherService,
+    private location: LocationService
+  ) {}
 
   title = 'angular-weather-app';
 
@@ -17,7 +23,14 @@ export class AppComponent {
 
   getPosition() {
     this.geolocation.subscribe((position: any) =>
-      console.log(position.coords.latitude, position.coords.longitude)
+      this.weatherApi
+        .getGeoposition(position.coords.latitude, position.coords.longitude)
+        .subscribe((data) => {
+          this.location.changeCity({
+            name: data.LocalizedName,
+            id: Number(data.Key),
+          });
+        })
     );
   }
 }

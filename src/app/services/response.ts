@@ -2,8 +2,15 @@ import iconMap from '../pages/home/iconMap';
 
 interface MeausringUnit {
   Value: number;
-  Unit: 'C' | 'F';
   UnitType: number;
+}
+
+interface TemperatureUnit extends MeausringUnit {
+  Unit: 'C' | 'F';
+}
+
+interface DistanceUnit extends MeausringUnit {
+  Unit: 'm' | 'ft';
 }
 
 interface DayPortion {
@@ -16,8 +23,8 @@ export interface DailyForecast {
   Date: string;
   EpochDate: number;
   Temperature: {
-    Minimum: MeausringUnit;
-    Maximum: MeausringUnit;
+    Minimum: TemperatureUnit;
+    Maximum: TemperatureUnit;
   };
   Day: DayPortion;
   Night: DayPortion;
@@ -35,8 +42,8 @@ export interface CurrentWeather {
   PrecipitationType: null | string;
   IsDayTime: boolean;
   Temperature: {
-    Metric: MeausringUnit;
-    Imperial: MeausringUnit;
+    Metric: TemperatureUnit;
+    Imperial: TemperatureUnit;
   };
   MobileLink: string;
   Link: string;
@@ -62,6 +69,10 @@ interface AreaIdAndCode {
   LocalizedName: string;
 }
 
+interface AreaEnglish extends AreaIdAndCode {
+  EnglishName: string;
+}
+
 export interface LocationDetails {
   Version: number;
   Key: string;
@@ -70,4 +81,42 @@ export interface LocationDetails {
   LocalizedName: string;
   Country: AreaIdAndCode;
   AdministrativeArea: AreaIdAndCode;
+}
+
+export interface Geoposition extends LocationDetails {
+  EnglishName: string;
+  PrimaryPostalCode: string;
+  Region: AreaEnglish;
+  AdministrativeArea: {
+    ID: string;
+    LocalizedName: string;
+    EnglishName: string;
+    Level: number;
+    LocalizedType: string;
+    EnglishType: string;
+    CountryID: string;
+  };
+  TimeZone: {
+    Code: string;
+    Name: string;
+    GmtOffset: number;
+    IsDaylightSaving: boolean;
+    NextOffsetChange: string;
+  };
+  GeoPosition: {
+    Latitude: number;
+    Longitude: number;
+    Elevation: {
+      Metric: DistanceUnit;
+      Imperial: DistanceUnit;
+    };
+  };
+  IsAlias: false;
+  ParentCity: {
+    Key: string;
+    LocalizedName: string;
+    EnglishName: string;
+  };
+  SupplementalAdminAreas: [];
+  DataSets: string[];
 }
