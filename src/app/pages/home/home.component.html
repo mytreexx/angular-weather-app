@@ -4,7 +4,8 @@
     <app-city-card
       [weather]="currentWeather"
       [icon]="currentWeatherIcon"
-      [cityId]="location.city"
+      [cityId]="location.city.id"
+      [cityName]="location.city.name"
     />
   </div>
 

@@ -4,6 +4,7 @@ import { Injectable } from '@angular/core';
   providedIn: 'root',
 })
 export class LocationService {
-  city: number = 215854;
+  // todo check how to use interface here
+  city: { id: number; name: string } = { id: 215854, name: 'Tel-Aviv' };
   constructor() {}
 }

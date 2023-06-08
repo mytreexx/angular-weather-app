@@ -24,13 +24,13 @@ export class WeatherService {
 
   public getCurrentWeather() {
     return this.apiRequest<CurrentWeather[]>(
-      `/currentconditions/v1/${this.location.city}`
+      `/currentconditions/v1/${this.location.city.id}`
     );
   }
 
   public getFiveDayForecast() {
     return this.apiRequest<FiveDayForecast>(
-      `/forecasts/v1/daily/5day/${this.location.city}`
+      `/forecasts/v1/daily/5day/${this.location.city.id}`
     );
   }
 }

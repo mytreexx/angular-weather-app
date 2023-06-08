@@ -16,6 +16,7 @@ export class CityCardComponent {
   @Input() weather: CurrentWeather;
   @Input() icon: IconProp;
   @Input() cityId: number;
+  @Input() cityName: string;
 
   constructor(public favorites: FavoritesService) {}
 
