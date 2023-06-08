@@ -49,3 +49,8 @@ p {
 .favorites-icon {
   font-size: 24px;
 }
+
+::ng-deep .mdc-snackbar__surface {
+  background-color: #1da1f2 !important;
+  text-align: center;
+}
