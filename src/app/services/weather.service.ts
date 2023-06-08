@@ -2,7 +2,6 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { environment } from '../../environment/environment';
 import { CurrentWeather, FiveDayForecast, LocationDetails } from './response';
-import { LocationService } from './location.service';
 import { API_PATH, PARAMS } from './consts';
 
 @Injectable({

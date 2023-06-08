@@ -1,5 +1,5 @@
 import { Component, Input, OnChanges, SimpleChanges } from '@angular/core';
-import { Component, Input } from '@angular/core';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { IconProp } from '@fortawesome/fontawesome-svg-core';
 import iconMap from '../iconMap';
 
@@ -21,7 +21,8 @@ export class CityCardComponent implements OnChanges {
   constructor(
     public favorites: FavoritesService,
     private weatherApi: WeatherService,
-    private location: LocationService
+    private location: LocationService,
+    private snackBar: MatSnackBar
   ) {}
 
   @Input() cityId: number;
@@ -64,6 +65,12 @@ export class CityCardComponent implements OnChanges {
     this.favoriteIcon = this.isFavorite
       ? faHeartCircleMinus
       : faHeartCirclePlus;
+
+    if (this.isFavorite) {
+      this.snackBar.open(`${this.cityName} added to favorites`);
+    } else {
+      this.snackBar.open(`${this.cityName} removed from favorites`);
+    }
   }
 
   public changeCity() {
