@@ -67,9 +67,13 @@ export class CityCardComponent implements OnChanges {
       : faHeartCirclePlus;
 
     if (this.isFavorite) {
-      this.snackBar.open(`${this.cityName} added to favorites`);
+      this.snackBar.open(`${this.cityName} added to favorites`, undefined, {
+        duration: 3000,
+      });
     } else {
-      this.snackBar.open(`${this.cityName} removed from favorites`);
+      this.snackBar.open(`${this.cityName} removed from favorites`, undefined, {
+        duration: 1500,
+      });
     }
   }
 
