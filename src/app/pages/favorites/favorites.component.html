@@ -1,5 +1,3 @@
-<div class="favorites">
-  <div class="favorites-list">
-    <app-title>Favorites</app-title>
-  </div>
+<div *ngFor="let favorite of favorites.favorites; index as i">
+  <app-city-card [cityId]="favorite.id" [cityName]="favorite.name" />
 </div>

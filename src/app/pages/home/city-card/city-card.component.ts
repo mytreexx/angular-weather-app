@@ -21,17 +21,17 @@ export class CityCardComponent {
   constructor(public favorites: FavoritesService) {}
 
   isFavorite = this.favorites.favorites.some(
-    (favorite) => favorite === this.cityId
+    (favorite) => favorite.id === this.cityId
   );
   favoriteIcon = this.isFavorite ? faHeartCircleMinus : faHeartCirclePlus;
 
   toggleFavorite() {
     this.isFavorite
       ? this.favorites.removeFromFavorites(this.cityId)
-      : this.favorites.addToFavorites(this.cityId);
+      : this.favorites.addToFavorites({ id: this.cityId, name: this.cityName });
 
     this.isFavorite = this.favorites.favorites.some(
-      (favorite) => favorite === this.cityId
+      (favorite) => favorite.id === this.cityId
     );
 
     this.favoriteIcon = this.isFavorite
