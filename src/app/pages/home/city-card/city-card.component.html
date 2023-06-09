@@ -13,9 +13,9 @@
   <div class="current-weather-info">
     <fa-icon class="large-icon" [icon]="currentWeatherIcon" />
     <div>
-      <span>{{ currentWeather.Temperature.Metric.Value }}</span>
-      <span>°{{ currentWeather.Temperature.Metric.Unit }}</span>
-      <p>{{ currentWeather.WeatherText }}</p>
+      <span>{{ temperatureValue }}</span>
+      <span>°{{ temperatureUnit }}</span>
+      <p>{{ weatherText }}</p>
     </div>
   </div>
 </app-card>
