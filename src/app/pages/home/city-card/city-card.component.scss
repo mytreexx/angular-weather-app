@@ -38,11 +38,11 @@ p {
   cursor: pointer;
 
   a {
-    color: #ffffff;
+    color: var(--text);
     text-decoration: none;
   }
   :hover {
-    color: #eeeeee;
+    color: var(--hover);
   }
 }
 
@@ -51,6 +51,6 @@ p {
 }
 
 ::ng-deep .mdc-snackbar__surface {
-  background-color: #1da1f2 !important;
+  background-color: var(--backgroundColorPrimary) !important;
   text-align: center;
 }

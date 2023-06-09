@@ -6,7 +6,7 @@ mat-form-field {
   }
 
   ::ng-deep .mdc-text-field:not(.mdc-text-field--disabled) .mdc-floating-label {
-    color: #1da1f2;
+    color: var(--backgroundColorPrimary);
   }
 
   ::ng-deep .mdc-text-field--filled .mdc-line-ripple::before {

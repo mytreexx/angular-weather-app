@@ -1,8 +1,38 @@
 /* You can add global styles to this file, and also import other style files */
+@use "sass:map";
+:root {
+  --dark-theme: false;
+}
+
+$dark-theme: var(--primary) !default;
+
+@mixin lighten() {
+  --backgroundColorPrimary: rgba(29, 161, 242, 1);
+  --backgroundColorSecondary: rgba(127, 206, 255, 1);
+  --text: #ffffff;
+  --lightShadow: #ffffff33;
+  --hover: #eeeeee;
+}
+
+@mixin darken() {
+  --backgroundColorPrimary: rgb(0, 20, 32);
+  --backgroundColorSecondary: rgb(8, 77, 121);
+  --text: #bababa;
+  --lightShadow: #00000033;
+  --hover: #eeeeee;
+}
 
 html,
 body {
   height: 100%;
+}
+
+body {
+  @include lighten;
+}
+
+body.dark {
+  @include darken;
 }
 
 body {
@@ -12,8 +42,8 @@ body {
   font-family: Roboto, "Helvetica Neue", sans-serif;
   background: linear-gradient(
     4deg,
-    rgba(127, 206, 255, 1) 0%,
-    rgba(29, 161, 242, 1) 100%
+    var(--backgroundColorSecondary) 0%,
+    var(--backgroundColorPrimary) 100%
   );
   background-repeat: no-repeat;
   background-attachment: fixed;
@@ -25,15 +55,15 @@ body {
 }
 
 ::-webkit-scrollbar-track {
-  border: 1px solid #ffffff33;
+  border: 1px solid var(--lightShadow);
   border-radius: 10px;
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #ffffff33;
+  background: var(--lightShadow);
   border-radius: 10px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: #ffffff33;
+  background: var(--lightShadow);
 }

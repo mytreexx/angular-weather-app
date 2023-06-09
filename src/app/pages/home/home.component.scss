@@ -10,5 +10,6 @@
 .current-weather {
   align-self: flex-start;
   margin-bottom: 60px;
-  color: #ffffff;
+  color: var(--text);
+  border: 1px solid var(--someOtherColor);
 }

@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { WeatherService } from 'src/app/services/weather.service';
 import { DailyForecast } from 'src/app/services/response';
 import { City, LocationService } from 'src/app/services/location.service';
+import { UserSettingsService } from 'src/app/services/user-settings.service';
 
 @Component({
   selector: 'app-home',
@@ -14,13 +15,16 @@ export class HomeComponent {
 
   constructor(
     private weatherApi: WeatherService,
-    public location: LocationService
+    public location: LocationService,
+    private userSettingsService: UserSettingsService
   ) {}
 
   ngOnInit(): void {
     this.location.city.subscribe((city) => {
       this.currentCity = city;
-      this.getFiveDayForecast();
+      this.userSettingsService.metric.subscribe(() =>
+        this.getFiveDayForecast()
+      );
     });
   }
 
