@@ -1,0 +1,28 @@
+.animation-container {
+  width: 100vw;
+  height: calc(100vh);
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: -1;
+  overflow: hidden;
+}
+
+.cloud {
+  position: absolute;
+  transform: translate(-300px, 0);
+  animation: linear infinite;
+  animation-name: run;
+  z-index: -1;
+  color: white;
+  opacity: 0.2;
+
+  @keyframes run {
+    0% {
+      transform: translate(-300px, 0);
+    }
+    100% {
+      transform: translate(100vw, 0);
+    }
+  }
+}
