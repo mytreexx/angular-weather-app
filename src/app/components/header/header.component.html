@@ -1,23 +1,14 @@
 <div class="header">
-  <div class="logo">
-    <fa-icon [icon]="logoIcon" class="logo-icon" />
-    <span [ngClass]="{ displayNone: mobileDisplay }">weatherApp</span>
-  </div>
+  <a routerLink="/home" routerLinkActive="active" ariaCurrentWhenActive="page">
+    <div class="logo">
+      <fa-icon [icon]="logoIcon" class="logo-icon" />
+      <span [ngClass]="{ displayNone: mobileDisplay }">weatherApp</span>
+    </div>
+  </a>
 
   <app-search />
 
   <div>
-    <a
-      routerLink="/home"
-      routerLinkActive="active"
-      ariaCurrentWhenActive="page"
-    >
-      <app-button>
-        <fa-icon [icon]="homeIcon" class="icon" />
-        <span [ngClass]="{ displayNone: mobileDisplay }">Home</span>
-      </app-button>
-    </a>
-
     <a
       routerLink="/favorites"
       routerLinkActive="active"
@@ -29,12 +20,18 @@
       </app-button>
     </a>
 
-    <app-button (click)="toggleTheme()">
-      <fa-icon [icon]="themeIcon" />
+    <app-button mat-button [matMenuTriggerFor]="menu">
+      <fa-icon [icon]="gearIcon" class="icon" />
     </app-button>
 
-    <app-button (click)="toggleUnits()">
-      <fa-icon [icon]="unitsIcon" />
-    </app-button>
+    <mat-menu #menu="matMenu">
+      <button mat-menu-item (click)="toggleTheme()">
+        <fa-icon [icon]="themeIcon" /> Theme
+      </button>
+
+      <button mat-menu-item (click)="toggleUnits()">
+        <fa-icon [icon]="unitsIcon" /> Units
+      </button>
+    </mat-menu>
   </div>
 </div>

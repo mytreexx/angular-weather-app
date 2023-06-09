@@ -8,6 +8,7 @@ import {
   faHome,
   faCloud,
   faHeart,
+  faGear,
 } from '@fortawesome/free-solid-svg-icons';
 import {
   Theme,
@@ -26,11 +27,12 @@ export class HeaderComponent {
   public logoIcon: IconProp = faCloud;
   public homeIcon: IconProp = faHome;
   public favoritesIcon: IconProp = faHeart;
+  public gearIcon: IconProp = faGear;
 
   constructor(private userSettingsService: UserSettingsService) {}
 
   ngOnInit() {
-    this.mobileDisplay = window.innerWidth < 700;
+    this.mobileDisplay = window.innerWidth < 750;
     this.userSettingsService.theme.subscribe(
       (theme) => (this.themeIcon = theme === Theme.Light ? faMoon : faSun)
     );
@@ -50,6 +52,6 @@ export class HeaderComponent {
 
   @HostListener('window:resize', ['$event'])
   onWindowResize() {
-    this.mobileDisplay = window.innerWidth < 700;
+    this.mobileDisplay = window.innerWidth < 750;
   }
 }
