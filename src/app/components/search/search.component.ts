@@ -70,11 +70,14 @@ export class SearchComponent implements OnInit {
     return this.weatherApiService
       .getSearchedResults(filterValue)
       .pipe(
-        map((data) =>
-          data.map(
-            (option) =>
-              <City>{ Key: option.Key, LocalizedName: option.LocalizedName }
-          )
+        map(
+          (data) =>
+            (data &&
+              data.map(
+                (option) =>
+                  <City>{ Key: option.Key, LocalizedName: option.LocalizedName }
+              )) ||
+            []
         )
       );
   }
