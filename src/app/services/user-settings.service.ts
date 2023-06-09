@@ -10,7 +10,7 @@ export enum Theme {
   providedIn: 'root',
 })
 export class UserSettingsService {
-  metric: boolean = true;
+  metric = new BehaviorSubject(false);
   theme = new BehaviorSubject(Theme.Light);
 
   constructor() {}
@@ -21,4 +21,7 @@ export class UserSettingsService {
     );
   }
 
+  public toggleUnits() {
+    this.metric.next(!this.metric.getValue());
+  }
 }

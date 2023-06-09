@@ -4,17 +4,21 @@ import { environment } from '../../environment/environment';
 import { CurrentWeather, FiveDayForecast, LocationDetails } from './response';
 import { API_PATH, PARAMS } from './consts';
 import { Geoposition } from './response';
+import { UserSettingsService } from './user-settings.service';
 
 @Injectable({
   providedIn: 'root',
 })
 export class WeatherService {
-  constructor(private http: HttpClient) {}
+  constructor(
+    private http: HttpClient,
+    private userSettingsService: UserSettingsService
+  ) {}
 
   apiRequest<T>(path: string, q = '') {
     let params = new HttpParams({})
       .set(PARAMS.API_KEY, environment.apiKey)
-      .set(PARAMS.METRIC, true);
+      .set(PARAMS.METRIC, this.userSettingsService.metric.getValue());
 
     if (q) {
       params = params.set(PARAMS.Q, q);

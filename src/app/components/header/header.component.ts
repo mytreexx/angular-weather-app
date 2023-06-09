@@ -23,10 +23,18 @@ export class HeaderComponent {
     this.userSettingsService.theme.subscribe(
       (theme) => (this.themeIcon = theme === Theme.Light ? faMoon : faSun)
     );
+
+    this.userSettingsService.metric.subscribe(
+      (isMetric) => (this.unitsIcon = isMetric ? faF : faC)
+    );
+  }
+
   public toggleTheme() {
     this.userSettingsService.toggleTheme();
   }
 
+  public toggleUnits() {
+    this.userSettingsService.toggleUnits();
   }
 
   @HostListener('window:resize', ['$event'])

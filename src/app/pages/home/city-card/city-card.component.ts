@@ -11,6 +11,7 @@ import {
 import { FavoritesService } from 'src/app/services/favorites.service';
 import { WeatherService } from 'src/app/services/weather.service';
 import { LocationService } from 'src/app/services/location.service';
+import { UserSettingsService } from 'src/app/services/user-settings.service';
 
 @Component({
   selector: 'app-city-card',
@@ -22,7 +23,8 @@ export class CityCardComponent implements OnChanges {
     public favorites: FavoritesService,
     private weatherApi: WeatherService,
     private location: LocationService,
-    private snackBar: MatSnackBar
+    private snackBar: MatSnackBar,
+    private userSettings: UserSettingsService
   ) {}
 
   @Input() cityId: number;
@@ -37,7 +39,7 @@ export class CityCardComponent implements OnChanges {
   weatherText: string;
 
   ngOnInit(): void {
-    this.getCurrentWeather();
+    this.userSettings.metric.subscribe(() => this.getCurrentWeather());
     this.isFavorite = this.favorites.checkIfFavorite(this.cityId);
     this.favoriteIcon = this.isFavorite
       ? faHeartCircleMinus
@@ -54,11 +56,16 @@ export class CityCardComponent implements OnChanges {
   public getCurrentWeather() {
     this.weatherApi.getCurrentWeather(this.cityId).subscribe((data) => {
       const { WeatherIcon, Temperature, WeatherText } = data[0];
+      const isMetric = this.userSettings.metric.getValue();
 
       this.currentWeather = data[0];
       this.currentWeatherIcon = iconMap[WeatherIcon];
-      this.temperatureValue = Temperature.Metric.Value;
-      this.temperatureUnit = Temperature.Metric.Unit;
+      this.temperatureValue = isMetric
+        ? Temperature.Metric.Value
+        : Temperature.Imperial.Value;
+      this.temperatureUnit = isMetric
+        ? Temperature.Metric.Unit
+        : Temperature.Imperial.Unit;
       this.weatherText = WeatherText;
     });
   }
