@@ -6,27 +6,27 @@
 
   <app-search />
   <div>
-    <app-button>
-      <a
-        routerLink="/home"
-        routerLinkActive="active"
-        ariaCurrentWhenActive="page"
-      >
+    <a
+      routerLink="/home"
+      routerLinkActive="active"
+      ariaCurrentWhenActive="page"
+    >
+      <app-button>
         <mat-icon aria-hidden="false" aria-label="logo" fontIcon="home" />
         <span [ngClass]="{ displayNone: mobileDisplay }">Home</span>
-      </a>
-    </app-button>
+      </app-button>
+    </a>
 
-    <app-button>
-      <a
-        routerLink="/favorites"
-        routerLinkActive="active"
-        ariaCurrentWhenActive="page"
-      >
+    <a
+      routerLink="/favorites"
+      routerLinkActive="active"
+      ariaCurrentWhenActive="page"
+    >
+      <app-button>
         <mat-icon aria-hidden="false" aria-label="logo" fontIcon="star" />
         <span [ngClass]="{ displayNone: mobileDisplay }">Favorites</span>
-      </a>
-    </app-button>
+      </app-button>
+    </a>
 
     <app-button (click)="toggleTheme()">
       <fa-icon [icon]="themeIcon" />
