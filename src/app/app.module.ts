@@ -15,7 +15,6 @@ import { CardComponent } from './components/card/card.component';
 import { MatCommonModule } from '@angular/material/core';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
-import { MatIconModule } from '@angular/material/icon';
 import { MatDividerModule } from '@angular/material/divider';
 import { MatButtonModule } from '@angular/material/button';
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
@@ -48,7 +47,6 @@ import { MatSlideToggleModule } from '@angular/material/slide-toggle';
     BrowserAnimationsModule,
     MatButtonModule,
     MatDividerModule,
-    MatIconModule,
     SearchComponent,
     MatCommonModule,
     MatAutocompleteModule,

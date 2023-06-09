@@ -1,6 +1,6 @@
 <div class="header">
   <div class="logo">
-    <mat-icon aria-hidden="false" aria-label="logo" fontIcon="cloud" />
+    <fa-icon [icon]="logoIcon" class="logo-icon" />
     <span [ngClass]="{ displayNone: mobileDisplay }">weatherApp</span>
   </div>
 
@@ -13,7 +13,7 @@
       ariaCurrentWhenActive="page"
     >
       <app-button>
-        <mat-icon aria-hidden="false" aria-label="logo" fontIcon="home" />
+        <fa-icon [icon]="homeIcon" class="icon" />
         <span [ngClass]="{ displayNone: mobileDisplay }">Home</span>
       </app-button>
     </a>
@@ -24,7 +24,7 @@
       ariaCurrentWhenActive="page"
     >
       <app-button>
-        <mat-icon aria-hidden="false" aria-label="logo" fontIcon="star" />
+        <fa-icon [icon]="favoritesIcon" class="icon" />
         <span [ngClass]="{ displayNone: mobileDisplay }">Favorites</span>
       </app-button>
     </a>

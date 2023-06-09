@@ -1,6 +1,14 @@
 import { Component, HostListener } from '@angular/core';
 import { IconProp } from '@fortawesome/fontawesome-svg-core';
-import { faMoon, faSun, faC, faF } from '@fortawesome/free-solid-svg-icons';
+import {
+  faMoon,
+  faSun,
+  faC,
+  faF,
+  faHome,
+  faCloud,
+  faHeart,
+} from '@fortawesome/free-solid-svg-icons';
 import {
   Theme,
   UserSettingsService,
@@ -15,6 +23,9 @@ export class HeaderComponent {
   public mobileDisplay: boolean;
   public themeIcon: IconProp;
   public unitsIcon: IconProp;
+  public logoIcon: IconProp = faCloud;
+  public homeIcon: IconProp = faHome;
+  public favoritesIcon: IconProp = faHeart;
 
   constructor(private userSettingsService: UserSettingsService) {}
 
