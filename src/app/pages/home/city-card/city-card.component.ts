@@ -40,17 +40,22 @@ export class CityCardComponent implements OnChanges {
 
   ngOnInit(): void {
     this.userSettings.metric.subscribe(() => this.getCurrentWeather());
-    this.isFavorite = this.favorites.checkIfFavorite(this.cityId);
-    this.favoriteIcon = this.isFavorite
-      ? faHeartCircleMinus
-      : faHeartCirclePlus;
+    this.updateFavorite();
   }
 
   ngOnChanges(changes: SimpleChanges): void {
     const cityId = changes['cityId'];
     if (cityId.currentValue !== cityId.previousValue) {
       this.getCurrentWeather();
+      this.updateFavorite();
     }
+  }
+
+  updateFavorite() {
+    this.isFavorite = this.favorites.checkIfFavorite(this.cityId);
+    this.favoriteIcon = this.isFavorite
+      ? faHeartCircleMinus
+      : faHeartCirclePlus;
   }
 
   public getCurrentWeather() {
@@ -75,11 +80,7 @@ export class CityCardComponent implements OnChanges {
       ? this.favorites.removeFromFavorites(this.cityId)
       : this.favorites.addToFavorites({ id: this.cityId, name: this.cityName });
 
-    this.isFavorite = this.favorites.checkIfFavorite(this.cityId);
-
-    this.favoriteIcon = this.isFavorite
-      ? faHeartCircleMinus
-      : faHeartCirclePlus;
+    this.updateFavorite();
 
     if (this.isFavorite) {
       this.snackBar.open(`${this.cityName} added to favorites`, undefined, {

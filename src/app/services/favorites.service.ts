@@ -5,22 +5,30 @@ import { City } from './location.service';
   providedIn: 'root',
 })
 export class FavoritesService {
-  favorites: City[] = [
-    { id: 231459, name: 'Vilnius' },
-    { id: 215836, name: 'Givatayim' },
-    { id: 212476, name: 'Rishon LeZiyyon' },
-    { id: 215854, name: 'Tel Aviv' },
-  ];
+  favorites: City[] = [];
+
+  constructor() {
+    const storedFavorites = localStorage.getItem('favorites');
+    if (storedFavorites) {
+      this.favorites = JSON.parse(storedFavorites);
+    }
+
+    console.log('constructor', this.favorites);
+  }
 
   checkIfFavorite(id: number) {
-    return this.favorites.some((favorite) => favorite.id === id);
+    const result = this.favorites.some((favorite) => favorite.id === id);
+    console.log('checkIfFavorite', { id, result });
+    return result;
   }
 
   addToFavorites(city: City) {
     if (this.checkIfFavorite(city.id)) return;
     this.favorites.push(city);
+    localStorage.setItem('favorites', JSON.stringify(this.favorites));
   }
   removeFromFavorites(cityId: number) {
     this.favorites = this.favorites.filter((city: City) => city.id !== cityId);
+    localStorage.setItem('favorites', JSON.stringify(this.favorites));
   }
 }

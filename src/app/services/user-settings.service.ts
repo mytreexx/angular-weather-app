@@ -10,10 +10,20 @@ export enum Theme {
   providedIn: 'root',
 })
 export class UserSettingsService {
-  metric = new BehaviorSubject(false);
-  theme = new BehaviorSubject(Theme.Light);
+  metric = new BehaviorSubject(localStorage.getItem('metric') === 'true');
+  theme = new BehaviorSubject(
+    localStorage.getItem('theme') === 'dark' ? Theme.Dark : Theme.Light
+  );
 
-  constructor() {}
+  constructor() {
+    this.metric.subscribe((isMetric) =>
+      localStorage.setItem('metric', isMetric.toString())
+    );
+
+    this.theme.subscribe((theme) =>
+      localStorage.setItem('theme', theme.toString())
+    );
+  }
 
   public toggleTheme() {
     this.theme.next(
