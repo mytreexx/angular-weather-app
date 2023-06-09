@@ -1,3 +1,15 @@
 <app-header />
-
+<div class="animation-container">
+  <fa-icon
+    *ngFor="let cloud of clouds"
+    class="cloud"
+    [icon]="faCloud"
+    [ngStyle]="{
+      top: cloud.position + 'px',
+      'animation-duration': cloud.duration + 's',
+      'animation-delay': cloud.delay + 's',
+      'font-size': cloud.height + 'px',
+    }"
+  />
+</div>
 <router-outlet></router-outlet>

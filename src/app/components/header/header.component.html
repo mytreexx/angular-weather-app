@@ -7,26 +7,24 @@
   <app-search />
   <div>
     <app-button>
-      <mat-icon aria-hidden="false" aria-label="logo" fontIcon="home" />
       <a
-        [ngClass]="{ displayNone: mobileDisplay }"
         routerLink="/home"
         routerLinkActive="active"
         ariaCurrentWhenActive="page"
       >
-        Home
+        <mat-icon aria-hidden="false" aria-label="logo" fontIcon="home" />
+        <span [ngClass]="{ displayNone: mobileDisplay }">Home</span>
       </a>
     </app-button>
 
     <app-button>
-      <mat-icon aria-hidden="false" aria-label="logo" fontIcon="star" />
       <a
-        [ngClass]="{ displayNone: mobileDisplay }"
         routerLink="/favorites"
         routerLinkActive="active"
         ariaCurrentWhenActive="page"
       >
-        Favorites
+        <mat-icon aria-hidden="false" aria-label="logo" fontIcon="star" />
+        <span [ngClass]="{ displayNone: mobileDisplay }">Favorites</span>
       </a>
     </app-button>
   </div>

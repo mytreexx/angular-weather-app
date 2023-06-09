@@ -4,4 +4,16 @@ mat-form-field {
   ::ng-deep .mdc-text-field {
     border-radius: 16px;
   }
+
+  ::ng-deep .mdc-text-field:not(.mdc-text-field--disabled) .mdc-floating-label {
+    color: #1da1f2;
+  }
+
+  ::ng-deep .mdc-text-field--filled .mdc-line-ripple::before {
+    border-bottom: none;
+  }
+
+  ::ng-deep .mdc-text-field--filled .mdc-line-ripple::after {
+    border-bottom: none;
+  }
 }

@@ -32,6 +32,9 @@ export class CityCardComponent implements OnChanges {
   public currentWeatherIcon: IconProp;
   isFavorite: boolean;
   favoriteIcon: IconProp;
+  temperatureValue: number;
+  temperatureUnit: 'C' | 'F';
+  weatherText: string;
 
   ngOnInit(): void {
     this.getCurrentWeather();
@@ -50,8 +53,13 @@ export class CityCardComponent implements OnChanges {
 
   public getCurrentWeather() {
     this.weatherApi.getCurrentWeather(this.cityId).subscribe((data) => {
+      const { WeatherIcon, Temperature, WeatherText } = data[0];
+
       this.currentWeather = data[0];
-      this.currentWeatherIcon = iconMap[data[0].WeatherIcon];
+      this.currentWeatherIcon = iconMap[WeatherIcon];
+      this.temperatureValue = Temperature.Metric.Value;
+      this.temperatureUnit = Temperature.Metric.Unit;
+      this.weatherText = WeatherText;
     });
   }
 
