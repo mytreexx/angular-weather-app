@@ -15,8 +15,6 @@ export class LocationService {
     name: 'Tel-Aviv',
   });
 
-  constructor() {}
-
   changeCity(city: City) {
     this.city.next(city);
   }

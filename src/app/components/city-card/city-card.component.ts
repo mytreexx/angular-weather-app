@@ -1,7 +1,7 @@
 import { Component, Input, OnChanges, SimpleChanges } from '@angular/core';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { IconProp } from '@fortawesome/fontawesome-svg-core';
-import iconMap from '../iconMap';
+import iconMap from '../../pages/home/iconMap';
 
 import { CurrentWeather } from 'src/app/services/response';
 import {
@@ -19,14 +19,6 @@ import { UserSettingsService } from 'src/app/services/user-settings.service';
   styleUrls: ['./city-card.component.scss'],
 })
 export class CityCardComponent implements OnChanges {
-  constructor(
-    public favorites: FavoritesService,
-    private weatherApi: WeatherService,
-    private location: LocationService,
-    private snackBar: MatSnackBar,
-    private userSettings: UserSettingsService
-  ) {}
-
   @Input() cityId: number;
   @Input() cityName: string;
 
@@ -38,8 +30,16 @@ export class CityCardComponent implements OnChanges {
   temperatureUnit: 'C' | 'F';
   weatherText: string;
 
+  constructor(
+    public favoritesService: FavoritesService,
+    private weatherApiService: WeatherService,
+    private locationService: LocationService,
+    private snackBarService: MatSnackBar,
+    private userSettingsService: UserSettingsService
+  ) {}
+
   ngOnInit(): void {
-    this.userSettings.metric.subscribe(() => this.getCurrentWeather());
+    this.userSettingsService.metric.subscribe(() => this.getCurrentWeather());
     this.updateFavorite();
   }
 
@@ -52,22 +52,24 @@ export class CityCardComponent implements OnChanges {
   }
 
   updateFavorite() {
-    this.isFavorite = this.favorites.checkIfFavorite(this.cityId);
+    this.isFavorite = this.favoritesService.checkIfFavorite(this.cityId);
     this.favoriteIcon = this.isFavorite
       ? faHeartCircleMinus
       : faHeartCirclePlus;
   }
 
   public getCurrentWeather() {
-    this.weatherApi.getCurrentWeather(this.cityId).subscribe((data) => {
+    this.weatherApiService.getCurrentWeather(this.cityId).subscribe((data) => {
       const { WeatherIcon, Temperature, WeatherText } = data[0];
-      const isMetric = this.userSettings.metric.getValue();
+      const isMetric = this.userSettingsService.metric.getValue();
 
       this.currentWeather = data[0];
       this.currentWeatherIcon = iconMap[WeatherIcon];
+
       this.temperatureValue = isMetric
         ? Temperature.Metric.Value
         : Temperature.Imperial.Value;
+
       this.temperatureUnit = isMetric
         ? Temperature.Metric.Unit
         : Temperature.Imperial.Unit;
@@ -77,23 +79,34 @@ export class CityCardComponent implements OnChanges {
 
   public toggleFavorite() {
     this.isFavorite
-      ? this.favorites.removeFromFavorites(this.cityId)
-      : this.favorites.addToFavorites({ id: this.cityId, name: this.cityName });
+      ? this.favoritesService.removeFromFavorites(this.cityId)
+      : this.favoritesService.addToFavorites({
+          id: this.cityId,
+          name: this.cityName,
+        });
 
     this.updateFavorite();
 
     if (this.isFavorite) {
-      this.snackBar.open(`${this.cityName} added to favorites`, undefined, {
-        duration: 3000,
-      });
+      this.snackBarService.open(
+        `${this.cityName} added to favorites`,
+        undefined,
+        {
+          duration: 3000,
+        }
+      );
     } else {
-      this.snackBar.open(`${this.cityName} removed from favorites`, undefined, {
-        duration: 1500,
-      });
+      this.snackBarService.open(
+        `${this.cityName} removed from favorites`,
+        undefined,
+        {
+          duration: 1500,
+        }
+      );
     }
   }
 
   public changeCity() {
-    this.location.changeCity({ id: this.cityId, name: this.cityName });
+    this.locationService.changeCity({ id: this.cityId, name: this.cityName });
   }
 }

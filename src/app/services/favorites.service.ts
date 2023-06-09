@@ -12,18 +12,15 @@ export class FavoritesService {
     if (storedFavorites) {
       this.favorites = JSON.parse(storedFavorites);
     }
-
-    console.log('constructor', this.favorites);
   }
 
   checkIfFavorite(id: number) {
-    const result = this.favorites.some((favorite) => favorite.id === id);
-    console.log('checkIfFavorite', { id, result });
-    return result;
+    return this.favorites.some((favorite) => favorite.id === id);
   }
 
   addToFavorites(city: City) {
     if (this.checkIfFavorite(city.id)) return;
+
     this.favorites.push(city);
     localStorage.setItem('favorites', JSON.stringify(this.favorites));
   }
