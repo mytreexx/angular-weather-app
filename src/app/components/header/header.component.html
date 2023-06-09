@@ -27,5 +27,9 @@
         <span [ngClass]="{ displayNone: mobileDisplay }">Favorites</span>
       </a>
     </app-button>
+
+    <app-button (click)="toggleTheme()">
+      <fa-icon [icon]="themeIcon" />
+    </app-button>
   </div>
 </div>

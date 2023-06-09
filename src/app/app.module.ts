@@ -25,6 +25,7 @@ import { CityCardComponent } from './pages/home/city-card/city-card.component';
 import { DailyCardComponent } from './pages/home/daily-card/daily-card.component';
 import { FiveDayForecastComponent } from './pages/home/five-day-forecast/five-day-forecast.component';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 
 @NgModule({
   declarations: [
@@ -53,6 +54,7 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
     MatAutocompleteModule,
     FontAwesomeModule,
     MatSnackBarModule,
+    MatSlideToggleModule,
   ],
   providers: [WeatherService],
   bootstrap: [AppComponent],

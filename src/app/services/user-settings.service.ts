@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
+import { BehaviorSubject } from 'rxjs';
 
-enum Theme {
+export enum Theme {
   Dark = 'dark',
   Light = 'light',
 }
@@ -10,7 +11,14 @@ enum Theme {
 })
 export class UserSettingsService {
   metric: boolean = true;
-  theme: Theme = Theme.Light;
+  theme = new BehaviorSubject(Theme.Light);
 
   constructor() {}
+
+  public toggleTheme() {
+    this.theme.next(
+      this.theme.getValue() === Theme.Light ? Theme.Dark : Theme.Light
+    );
+  }
+
 }

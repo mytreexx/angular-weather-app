@@ -3,6 +3,7 @@ import { GeolocationService } from '@ng-web-apis/geolocation';
 import { WeatherService } from './services/weather.service';
 import { LocationService } from './services/location.service';
 import { faCloud } from '@fortawesome/free-solid-svg-icons';
+import { Theme, UserSettingsService } from './services/user-settings.service';
 
 @Component({
   selector: 'app-root',
@@ -13,7 +14,8 @@ export class AppComponent {
   constructor(
     private readonly geolocation: GeolocationService,
     public weatherApi: WeatherService,
-    private location: LocationService
+    private location: LocationService,
+    private userSettingsService: UserSettingsService
   ) {}
 
   title = 'angular-weather-app';
@@ -28,6 +30,14 @@ export class AppComponent {
   ngOnInit(): void {
     this.getPosition();
     this.createClouds();
+
+    this.userSettingsService.theme.subscribe((theme) => {
+      if (theme === Theme.Dark) {
+        document.body.classList.add('dark');
+      } else {
+        document.body.classList.remove('dark');
+      }
+    });
   }
 
   createClouds() {
