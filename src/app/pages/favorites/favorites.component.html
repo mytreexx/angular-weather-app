@@ -1,8 +1,12 @@
 <div class="favorites">
   <app-title>Favorites</app-title>
   <div class="favorites-list">
+    <app-card *ngIf="favoritesService.favorites.length === 0">
+      <h2>There are no favorite cities, go ahead and add some!</h2>
+    </app-card>
+
     <app-city-card
-      *ngFor="let favorite of favorites.favorites; index as i"
+      *ngFor="let favorite of favoritesService.favorites; index as i"
       [cityId]="favorite.id"
       [cityName]="favorite.name"
     />

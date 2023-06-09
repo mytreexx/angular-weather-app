@@ -11,21 +11,21 @@ import { Theme, UserSettingsService } from './services/user-settings.service';
   styleUrls: ['./app.component.scss'],
 })
 export class AppComponent {
-  constructor(
-    private readonly geolocation: GeolocationService,
-    public weatherApi: WeatherService,
-    private location: LocationService,
-    private userSettingsService: UserSettingsService
-  ) {}
+  cloudIcon = faCloud;
 
-  title = 'angular-weather-app';
-  faCloud = faCloud;
   clouds: {
     height: number;
     position: number;
     duration: number;
     delay: number;
   }[];
+
+  constructor(
+    private readonly geolocationService: GeolocationService,
+    public weatherApiService: WeatherService,
+    private locationService: LocationService,
+    private userSettingsService: UserSettingsService
+  ) {}
 
   ngOnInit(): void {
     this.getPosition();
@@ -57,11 +57,11 @@ export class AppComponent {
   }
 
   getPosition() {
-    this.geolocation.subscribe((position: any) =>
-      this.weatherApi
+    this.geolocationService.subscribe((position: any) =>
+      this.weatherApiService
         .getGeoposition(position.coords.latitude, position.coords.longitude)
         .subscribe((data) => {
-          this.location.changeCity({
+          this.locationService.changeCity({
             name: data.LocalizedName,
             id: Number(data.Key),
           });

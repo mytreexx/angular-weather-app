@@ -14,13 +14,13 @@ export class HomeComponent {
   public currentCity: City;
 
   constructor(
-    private weatherApi: WeatherService,
-    public location: LocationService,
+    private weatherApiService: WeatherService,
+    private locationService: LocationService,
     private userSettingsService: UserSettingsService
   ) {}
 
   ngOnInit(): void {
-    this.location.city.subscribe((city) => {
+    this.locationService.city.subscribe((city) => {
       this.currentCity = city;
       this.userSettingsService.metric.subscribe(() =>
         this.getFiveDayForecast()
@@ -29,7 +29,7 @@ export class HomeComponent {
   }
 
   public getFiveDayForecast() {
-    this.weatherApi
+    this.weatherApiService
       .getFiveDayForecast(this.currentCity.id)
       .subscribe((data) => {
         this.fiveDayForecast = data.DailyForecasts;

@@ -53,7 +53,7 @@ export interface FiveDayForecast {
   Headline: {
     EffectiveDate: string;
     EffectiveEpochDate: number;
-    Severity: number; //todo 0-7
+    Severity: number;
     Text: string;
     Category: string;
     EndDate: string | null;

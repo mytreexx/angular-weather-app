@@ -3,6 +3,7 @@
     <a routerLink="/home">
       <h2 class="city-name" (click)="changeCity()">{{ cityName }}</h2>
     </a>
+
     <fa-icon
       class="favorites-icon"
       [icon]="favoriteIcon"
@@ -16,6 +17,7 @@
       class="large-icon"
       [icon]="currentWeatherIcon"
     />
+
     <div>
       <span>{{ temperatureValue }}</span>
       <span>°{{ temperatureUnit }}</span>

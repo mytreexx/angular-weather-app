@@ -8,6 +8,7 @@ import { CurrentWeather } from 'src/app/services/response';
   styleUrls: ['./favorites.component.scss'],
 })
 export class FavoritesComponent {
-  constructor(public favorites: FavoritesService) {}
   favoritesCurrentWeather: CurrentWeather[] = [];
+
+  constructor(public favoritesService: FavoritesService) {}
 }

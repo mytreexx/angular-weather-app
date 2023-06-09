@@ -13,9 +13,6 @@ import { Router } from '@angular/router';
 
 type City = Pick<LocationDetails, 'Key' | 'LocalizedName'>;
 
-/**
- * @title Filter autocomplete
- */
 @Component({
   selector: 'app-search',
   templateUrl: './search.component.html',
@@ -32,18 +29,18 @@ type City = Pick<LocationDetails, 'Key' | 'LocalizedName'>;
   ],
 })
 export class SearchComponent implements OnInit {
-  myControl = new FormControl('');
+  searchControl = new FormControl('');
   options: any[] = [];
   filteredOptions: Observable<City[]>;
 
   constructor(
-    private weatherApi: WeatherService,
-    private location: LocationService,
+    private weatherApiService: WeatherService,
+    private locationService: LocationService,
     private router: Router
   ) {}
 
   ngOnInit() {
-    this.filteredOptions = this.myControl.valueChanges.pipe(
+    this.filteredOptions = this.searchControl.valueChanges.pipe(
       debounceTime(300),
       map((value) => this.filter(value || '')),
       concatAll()
@@ -51,7 +48,7 @@ export class SearchComponent implements OnInit {
   }
 
   public onSelect(option: City) {
-    this.location.changeCity({
+    this.locationService.changeCity({
       id: Number(option.Key),
       name: option.LocalizedName,
     });
@@ -70,7 +67,7 @@ export class SearchComponent implements OnInit {
 
     const filterValue = value.toLowerCase();
 
-    return this.weatherApi
+    return this.weatherApiService
       .getSearchedResults(filterValue)
       .pipe(
         map((data) =>
