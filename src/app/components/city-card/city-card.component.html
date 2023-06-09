@@ -18,10 +18,13 @@
       [icon]="currentWeatherIcon"
     />
 
-    <div>
+    <div *ngIf="temperatureValue">
       <span>{{ temperatureValue }}</span>
       <span>°{{ temperatureUnit }}</span>
       <p>{{ weatherText }}</p>
+    </div>
+    <div *ngIf="!temperatureValue">
+      <h3>Oops! something went wrong</h3>
     </div>
   </div>
 </app-card>

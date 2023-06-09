@@ -6,6 +6,12 @@
 
   <div class="weather-card">
     <app-title>Five Day Forecast</app-title>
-    <app-five-day-forecast [forecast]="fiveDayForecast" />
+    <app-five-day-forecast
+      *ngIf="fiveDayForecast"
+      [forecast]="fiveDayForecast"
+    />
+    <app-card *ngIf="!fiveDayForecast">
+      <h2>Oops! something went wrong</h2>
+    </app-card>
   </div>
 </div>
