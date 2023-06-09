@@ -11,7 +11,11 @@
   </div>
 
   <div class="current-weather-info">
-    <fa-icon class="large-icon" [icon]="currentWeatherIcon" />
+    <fa-icon
+      *ngIf="currentWeatherIcon"
+      class="large-icon"
+      [icon]="currentWeatherIcon"
+    />
     <div>
       <span>{{ temperatureValue }}</span>
       <span>°{{ temperatureUnit }}</span>
